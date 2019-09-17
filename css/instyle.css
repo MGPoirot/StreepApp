@@ -1,0 +1,40 @@
+/* CSS Document */
+
+* {
+    font-family: Arial;
+  }
+a:link 						{color:black;text-decoration: none;}
+a:visited 					{color:black;text-decoration: none;}
+a:hover 					{color:black;text-decoration: none;} 
+a:active 					{color:black;text-decoration: none;}
+button 						{height:21px;width:7em;text-align: center;}
+input[type = submit]		{height:21px;width:7em;text-align: center;}
+form						{height:00px;}
+
+html{
+	width:100%;
+	background-repeat:no-repeat;
+	background-position:center; 		
+	background-image: url(../img/scouting.png), linear-gradient(#b0e0e6,black);
+}
+h1{
+	color:#656565;
+	text-align:center
+}
+body{
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
+}
+
+table{
+	border: 1px solid black;
+	background:rgba(255,255,255,0.9); 	
+}
+
+input[type=text]{
+	background-color:transparent;
+	border: 0px solid;
+	font-size:16px;
+	height:21px;
+}

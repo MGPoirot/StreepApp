@@ -1,0 +1,48 @@
+* {
+    font-family: Arial;
+  }
+html{
+	background-color:black;
+}
+input[type=submit]{
+	width:50%;
+	font-size:125px;;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-shadow: -5px 0 5px black, 0 5px 5px black, 5px 0 5px black, 0 -5px 5px black;
+	border-color:#000000;
+	border-width:thick;
+	background-repeat:no-repeat;
+	background-size:auto;
+	width:50%;
+	background-size:90% 90%;
+	background-position:center;
+	
+}
+select{
+	font-size:100px;
+	width:100%;
+	font-weight:bold;
+	background-color:black;
+	color:white;
+	border:none;
+}
+table{
+	font-size:70px;
+	width:100%;
+	color:white;
+}
+input{
+	font-size:70pt;
+	background-color:black;
+	border-style:none;
+}
+input[type=checkbox]
+{
+	  /* Double-sized Checkboxes */
+	  -ms-transform: scale(5); /* IE */
+	  -moz-transform: scale(5); /* FF */
+	  -webkit-transform: scale(5); /* Safari and Chrome */
+	  -o-transform: scale(5); /* Opera */
+	  margin:40px;
+}
