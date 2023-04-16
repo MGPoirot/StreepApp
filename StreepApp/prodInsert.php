@@ -9,7 +9,7 @@
 	$color = $_POST['color'];
 	$date = date("Y-m-d H:i:s");
 	
-	@mysql_select_db($database);
+// 	@mysqli_select_db($conn, $database);
 	if($product && $price){
 		
 		$query = "INSERT INTO products VALUES(NULL,'$product','$price','$color','0','$date','$isActive')";

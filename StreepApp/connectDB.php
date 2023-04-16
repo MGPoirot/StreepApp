@@ -10,8 +10,8 @@
 
 	$serverName = "localhost";
 	$userName = "root";
-	$password = "null";
-	$dbName = "myfirstdatabase";
+	$password = "";
+	$dbName = "streepapp_db";
 
 	$conn = mysqli_connect($serverName, $userName, $password, $dbName);
 

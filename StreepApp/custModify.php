@@ -1,10 +1,12 @@
-<?php 
+<?php
 	include 'connectDB.php';	//connects to the MySQL database for lookup
 	include 'ADMINcheck.php';	//returns user to main site when not admin
 	if(!isset($_POST['submit']))  {
-		$q = "SELECT * FROM personalia WHERE ID = $_GET[id]";
-		$result = mysqli_query($conn, $q);
-		$personalia = mysqli_fetch_array($result);
+	    if(array_key_exists('id', $_GET)){
+            $q = "SELECT * FROM personalia WHERE ID = $_GET[id]";
+            $result = mysqli_query($conn, $q);
+            $personalia = mysqli_fetch_array($result);
+        }
 	}
 ?>
 <script type="text/javascript" src="jquery.min.js"></script>

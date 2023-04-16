@@ -27,7 +27,7 @@
 		} else { 
 			$debt = $_POST['debt'];
 		}	
-		@mysql_select_db($database);
+// 		@mysql_select_db($database);
 		
 		if($password == $password2){
 			$query = "INSERT INTO personalia VALUES('$ID','$name','$email','$password','$debt','$date','$isAdmin','1')";

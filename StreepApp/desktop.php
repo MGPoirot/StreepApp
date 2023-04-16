@@ -46,7 +46,7 @@
 		</form>
 		<form action="logout.php" method="post">
     	<td>
-        	<input type="submit" name="logout" value="logout">
+        	<input type="submit" name="logout" value="log uit">
        	</td>
 		</form>
     </tr>

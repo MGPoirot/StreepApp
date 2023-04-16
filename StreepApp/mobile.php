@@ -37,35 +37,41 @@
     <table>
         <tr>
 			<td>
-        	<select name="name" title="op kosten van"><?php
-				echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
-				$result1 = mysqli_query($conn, "SELECT ID FROM personalia ORDER BY lastused DESC");
-				while($nextup = mysqli_fetch_array($result1)){
-					if(isActive($nextup['ID']) and $nextup['ID'] != $_COOKIE['deviceID']){
-						echo "<option>" . giveName($nextup['ID']) . "</option>";
-					}
-				}
-			?></select >
+        	<select name="name" title="op kosten van">
+        	    <?php
+                    echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
+                    $result1 = mysqli_query($conn, "SELECT ID FROM personalia ORDER BY lastused DESC");
+                    while($nextup = mysqli_fetch_array($result1)){
+                        if(isActive($nextup['ID']) and $nextup['ID'] != $_COOKIE['deviceID']){
+                            echo "<option>" . giveName($nextup['ID']) . "</option>";
+                        }
+                    }
+			    ?>
+			</select >
             </td>
             <td>
-                <select name="amount" style="width:100%" title="aantal">
-                    <?php for ($i = 1; $i <= 24; $i++) {echo "<option>" . $i . "</option>";}?>
-                </select>
+            <select name="amount" style="width:100%" title="aantal">
+                <?php for ($i = 1; $i <= 24; $i++) {echo "<option>" . $i . "</option>";}?>
+            </select>
+
+
             </td>
         </tr>
     </table>
+    <table>
 		<?php
-            $num_rows = mysql_num_rows(mysqli_query($conn, "SELECT * FROM products WHERE isActive"));
+            $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM
+            products WHERE isActive"));
             $rows = round($num_rows / 2);
             $result = mysqli_query($conn, "SELECT * FROM products ORDER BY timessold DESC");
             while($nextup = mysqli_fetch_array($result)){
 				if($nextup['isActive']){
-					echo "<input 
-								id='sumbit' 
-								type='submit' 
-								name='product' 
-								value="  . $nextup['prodName']. " 
-								style='height:". ((100/$rows)-(25/$rows)) ."%; 
+					echo "<input
+								id='sumbit'
+								type='submit'
+								name='product'
+								value="  . $nextup['prodName']. "
+								style='height:". ((100/$rows)-(25/$rows)) ."%;
 								background-color:".$nextup['colorHex']."'
 							>";
 				}

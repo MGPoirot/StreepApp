@@ -31,7 +31,9 @@ function giveID($name) {
 function giveProduct($ID) {
     include 'connectDB.php';
 	$result = mysqli_fetch_array(mysqli_query($conn, "SELECT prodName FROM products WHERE prodID = '$ID'"));
-	if($result['prodName']){return $result['prodName'];}
+	if(isset($result['prodName'])){
+	    return $result['prodName'];
+	}
 	else{return "<i><font color='#9D9D9D'>[verwijderd]</i>";}
 }
 
