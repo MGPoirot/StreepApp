@@ -13,7 +13,7 @@
 	if($product && $price){
 		
 		$query = "INSERT INTO products VALUES(NULL,'$product','$price','$color','0','$date','$isActive')";
-		mysql_query($query);
+		mysqli_query($conn, $query);
 	}
 	header('Location: prodList.php');
 	mysql_close();

@@ -17,17 +17,20 @@
 		include 'connectDB.php';
 		
 		$name = $_POST["deviceID"];
-		$password = mysql_query("SELECT password FROM personalia WHERE name = '$name'");
-		$result = mysql_fetch_array($password);
+		$password = mysqli_query($conn, "SELECT password FROM personalia WHERE
+		name = '$name'");
+		$result = mysqli_fetch_array($password);
 		
 		if(!strcmp($result['password'],$_POST["password"])){
 			if(isset($_POST['remember'])){
-				$deviceID = mysql_query("SELECT ID FROM personalia WHERE name = '$name'");
-				$resultaat = mysql_fetch_array($deviceID);
+				$deviceID = mysqli_query($conn, "SELECT ID FROM personalia
+				WHERE name = '$name'");
+				$resultaat = mysqli_fetch_array($deviceID);
 				setcookie("deviceID",strval($resultaat['ID']), time()+10000);
 			}else{
-				$deviceID = mysql_query("SELECT ID FROM personalia WHERE name = '$name'");
-				$resultaat = mysql_fetch_array($deviceID);
+				$deviceID = mysqli_query("SELECT ID FROM personalia WHERE
+				name = '$name'");
+				$resultaat = mysqli_fetch_array($deviceID);
 				setcookie("deviceID",strval($resultaat['ID']), time()+300);
 			}
 			header('Location: index.php');
@@ -44,8 +47,8 @@
 		<?php 
 			include 'connectDB.php';
 			$query1 = "SELECT name FROM personalia ORDER BY name";	
-			$result1 = mysql_query($query1);
-			while($nextup = mysql_fetch_array($result1)){
+			$result1 = mysqli_query($conn, $query1);
+			while($nextup = mysqli_fetch_array($result1)){
 				echo "<option>" . $nextup['name'] . "</option>";
 			}
         ?>

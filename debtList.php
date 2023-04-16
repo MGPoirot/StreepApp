@@ -20,7 +20,8 @@
     					   Schulden
     <a href="contList.php">Inbox</a>
 </h1>
-<p><i>Links kunnen meerdere schulden tegelijkertijd verandert worden. Rechts wordt hiervan een notitie gemaakt.</i></p>
+<p><i>Links kunnen meerdere schulden tegelijkertijd veranderd worden. Rechts
+wordt hiervan een notitie gemaakt.</i></p>
 <table width="50%" style="float: left;">
 	<form action='debting.php' style='height:0px;' method="POST">
 	<tr>
@@ -34,8 +35,8 @@
     <?php
         include 'connectDB.php';
         $query = "SELECT * FROM personalia ORDER BY name ASC";	
-        $result = mysql_query($query); 
-        while($nextup = mysql_fetch_array($result)){
+        $result = mysqli_query($conn, $query);
+        while($nextup = mysqli_fetch_array($result)){
             echo "
 			<tr>
 				<td>" 	 . $nextup['name'] . "</td>
@@ -64,8 +65,8 @@
 	</tr>
     <?php
 		$counter = 0;
-        $result = mysql_query("SELECT * FROM logs ORDER BY date DESC");
-        while($nextup = mysql_fetch_array($result) and $counter < 17){	
+        $result = mysqli_query($conn, "SELECT * FROM logs ORDER BY date DESC");
+        while($nextup = mysqli_fetch_array($result) and $counter < 17){
 			$counter++;
 				if(date('d')==date("d", strtotime($nextup['date']))){	$date = $nextup['date'];$month = addcslashes(translate_names(date('F', strtotime($date))), 'a..zA..Z');$string = "H:i";}
 				else{													$date = $nextup['date'];$month = addcslashes(translate_names(date('F', strtotime($date))), 'a..zA..Z');$string = "d $month";}

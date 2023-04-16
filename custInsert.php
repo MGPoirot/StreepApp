@@ -31,7 +31,7 @@
 		
 		if($password == $password2){
 			$query = "INSERT INTO personalia VALUES('$ID','$name','$email','$password','$debt','$date','$isAdmin','1')";
-			mysql_query($query) or die(mysql_error());
+			mysqli_query($conn, $query) or die(mysql_error());
 			
 			if(!isset($_COOKIE["deviceID"])){
 				setcookie("deviceID",$ID, time()+10000);

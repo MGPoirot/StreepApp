@@ -41,10 +41,10 @@
             <td><b>Wanneer</b></td>
 		<tr>
 		<?php
-            $result = mysql_query("SELECT * FROM purchases ORDER BY purchDate DESC"); 
+            $result = mysqli_query($conn, "SELECT * FROM purchases ORDER BY purchDate DESC");
             $counter = 0;
             $max = 25;
-            while($nextup = mysql_fetch_array($result) and ($counter < $max)){
+            while($nextup = mysqli_fetch_array($result) and ($counter < $max)){
          	    if($nextup['custID'] == $_COOKIE['deviceID']){
                    $counter++;
                    $adjective = '';

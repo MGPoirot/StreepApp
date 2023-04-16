@@ -3,8 +3,8 @@
 	include 'ADMINcheck.php';	//returns user to main site when not admin
 	if(!isset($_POST['submit']))  {
 		$q = "SELECT * FROM personalia WHERE ID = $_GET[id]";
-		$result = mysql_query($q);
-		$personalia = mysql_fetch_array($result);
+		$result = mysqli_query($conn, $q);
+		$personalia = mysqli_fetch_array($result);
 	}
 ?>
 <script type="text/javascript" src="jquery.min.js"></script>
@@ -53,7 +53,7 @@ schulden kunnen aangepast worden bij <u><a style="color:#001DFF" href="debtList.
 	if(isset($_POST['submit']))	{
 		if(!isset($_POST['isAdmin'])){$isAdmin = 0;}else{$isAdmin = 1;}
 		$u = "UPDATE personalia SET `name` = '$_POST[name]', `email` = '$_POST[email]', `isAdmin` = '$isAdmin' WHERE ID = $_POST[id]";
-		mysql_query($u) or die(mysql_error());
+		mysqli_query($conn, $u) or die(mysql_error());
 		header('Location: custList.php');
 	}
 ?>
@@ -64,7 +64,7 @@ schulden kunnen aangepast worden bij <u><a style="color:#001DFF" href="debtList.
 <?php
 	if(isset($_POST['delete']))	{
 		$u = "UPDATE personalia SET `isActive` = 'false' WHERE ID = $_POST[id]";
-		mysql_query($u) or die(mysql_error());
+		mysqli_query($conn, $u) or die(mysql_error());
 		header('Location: custList.php');
 	}
 ?>

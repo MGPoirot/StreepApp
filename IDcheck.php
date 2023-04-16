@@ -4,7 +4,7 @@
 		else{
 			include 'connectDB.php';
 			$ID = $_COOKIE['deviceID'];
-			$IDcheck = mysql_fetch_array( mysql_query("SELECT name FROM personalia WHERE ID = '$ID'"));
+			$IDcheck = mysqli_fetch_array( mysqli_query($conn, "SELECT name FROM personalia WHERE ID = '$ID'"));
 			if(empty($IDcheck['name'])){
 				echo"ik wil je uitloggen!";
 				header('Location: logout.php');

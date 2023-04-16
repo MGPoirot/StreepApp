@@ -48,8 +48,8 @@
                 <select name="name" title="op kosten van">
                     <?php
                         echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
-                        $result1 = mysql_query("SELECT name FROM personalia ORDER BY lastused DESC");
-                        while($nextup = mysql_fetch_array($result1)){
+                        $result1 = mysqli_query($conn, "SELECT name FROM personalia ORDER BY lastused DESC");
+                        while($nextup = mysqli_fetch_array($result1)){
                             if($nextup['name'] != giveName($_COOKIE['deviceID'])){
                                 echo "<option>" .$nextup['name'] . "</option>";
                             }
@@ -65,10 +65,10 @@
         </tr>
     </table>
 		<?php
-            $num_rows = mysql_num_rows(mysql_query("SELECT * FROM products"));
+            $num_rows = mysql_num_rows(mysql_query(mysqli_query($conn, "SELECT * FROM products"));
             $rows = round($num_rows / 2);
-            $result = mysql_query("SELECT * FROM products ORDER BY timessold DESC");
-            while($nextup = mysql_fetch_array($result)){
+            $result = mysqli_query($conn, "SELECT * FROM products ORDER BY timessold DESC");
+            while($nextup = mysqli_fetch_array($result)){
                 echo "<input 
 							id='sumbit' 
 							type='submit' 
@@ -115,10 +115,10 @@
             <td><b>Wanneer</b></td>
 		<tr>
 		<?php
-            $result = mysql_query("SELECT * FROM purchases ORDER BY purchDate DESC"); 
+            $result = mysqli_query($conn, "SELECT * FROM purchases ORDER BY purchDate DESC");
             $counter = 0;
             $max = 25;
-            while($nextup = mysql_fetch_array($result) and ($counter < $max)){
+            while($nextup = mysqli_fetch_array($result) and ($counter < $max)){
          	    if($nextup['custID'] == $_COOKIE['deviceID']){
                    $counter++;
                    $adjective = '';

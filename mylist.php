@@ -51,8 +51,8 @@
         	<td>
         	<select name="name" style="width:180px"><?php
 				echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
-				$result1 = mysql_query("SELECT ID FROM personalia ORDER BY lastused DESC");
-				while($nextup = mysql_fetch_array($result1)){
+				$result1 = mysqli_query($conn, "SELECT ID FROM personalia ORDER BY lastused DESC");
+				while($nextup = mysqli_fetch_array($result1)){
 					if(isActive($nextup['ID']) and $nextup['ID'] != $_COOKIE['deviceID']){
 						echo "<option>" . giveName($nextup['ID']) . "</option>";
 					}
@@ -82,8 +82,8 @@
     <tr>
         <?php
 			$NoResult = true;
-			$result = mysql_query("SELECT * FROM purchases ORDER BY purchDate DESC"); 
-			while($nextup = mysql_fetch_array($result)){
+			$result = mysqli_query($conn, "SELECT * FROM purchases ORDER BY purchDate DESC");
+			while($nextup = mysqli_fetch_array($result)){
 				$measuredate = date("Y-m-d", strtotime($nextup['purchDate']));
 				if($measuredate >= $oldmax and $measuredate <= $newmax){
 					if($qname == 'iedereen' or $qID==$nextup['custID']){
@@ -117,8 +117,8 @@
 	</tr>
     <?php
 		$counter = 0;
-        $result = mysql_query("SELECT * FROM logs ORDER BY date DESC");
-        while($nextup = mysql_fetch_array($result) and $counter < 17){
+        $result = mysqli_query($conn, "SELECT * FROM logs ORDER BY date DESC");
+        while($nextup = mysqli_fetch_array($result) and $counter < 17){
 			if(giveName($nextup['subject']) == $qname or $qname == 'iedereen'){
 				$measuredate = date("Y-m-d", strtotime($nextup['date']));
 				if($measuredate >= $oldmax and $measuredate <= $newmax){

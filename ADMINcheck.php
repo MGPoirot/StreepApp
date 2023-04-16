@@ -4,16 +4,15 @@
 	else{
 		include 'connectDB.php';
 		$ID = $_COOKIE['deviceID'];
-		$IDcheck = mysql_fetch_array( mysql_query("SELECT name FROM personalia WHERE ID = '$ID'"));
+		$IDcheck = mysqli_fetch_array( mysqli_query($conn, "SELECT name FROM personalia WHERE ID = '$ID'"));
 		if(empty($IDcheck['name'])){
 			echo"ik wil je uitloggen!";
 			header('Location: logout.php');
 		}
 	}
 	include 'connectDB.php';
-	
 	$devID = $_COOKIE['deviceID'];
-	$result = mysql_fetch_array(mysql_query("SELECT isAdmin FROM personalia WHERE ID = '$devID'"));
+	$result = mysqli_fetch_array(mysqli_query($conn, "SELECT isAdmin FROM personalia WHERE ID = '$devID'"));
 	if(!$result['isAdmin']){
 		header('Location: desktop.php');
 	}

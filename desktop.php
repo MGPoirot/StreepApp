@@ -64,8 +64,8 @@
         <td>
         	<select name="name"><?php
 				echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
-				$result1 = mysql_query("SELECT ID FROM personalia ORDER BY lastused DESC");
-				while($nextup = mysql_fetch_array($result1)){
+				$result1 = mysqli_query($conn, "SELECT ID FROM personalia ORDER BY lastused DESC");
+				while($nextup = mysqli_fetch_array($result1)){
 					if(isActive($nextup['ID']) and $nextup['ID'] != $_COOKIE['deviceID']){
 						echo "<option>" . giveName($nextup['ID']) . "</option>";
 					}
@@ -82,8 +82,8 @@
 		<td>
         	<select name="product" style="font-size:17px;width:100%"><?php
 				$query = "SELECT * FROM products ORDER BY timessold DESC";	
-				$result = mysql_query($query);
-                while($nextup = mysql_fetch_array($result)){
+				$result = mysqli_query($conn, $query);
+                while($nextup = mysqli_fetch_array($result)){
 					echo "<option>" . $nextup['prodName']."</option>";
 				}
              ?></select>
@@ -93,10 +93,10 @@
 		</td>
         </form>
         <td><?php
-            $result = mysql_query("SELECT * FROM purchases ORDER BY purchDate DESC"); 
+            $result = mysqli_query($conn, "SELECT * FROM purchases ORDER BY purchDate DESC");
 			$counter = 0;
 			if(!isset($max)){$max = 25;}
-            while($nextup = mysql_fetch_array($result) and ($counter < $max)){
+            while($nextup = mysqli_fetch_array($result) and ($counter < $max)){
 				$counter++;
 				$adjective = '';
 				if(date('d')==date("d", strtotime($nextup['purchDate']))){		  $date = $nextup['purchDate'];$month = addcslashes(translate_names(date('F', strtotime($date))), 'a..zA..Z');$string = "H:i";$adjective = 'vandaag ';}

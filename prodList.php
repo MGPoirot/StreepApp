@@ -35,9 +35,9 @@
         </tr>
         <?php
             $query = "SELECT * FROM products";	
-            $result = mysql_query($query); 
+            $result = mysqli_query($conn, $query);
         
-            while($nextup = mysql_fetch_array($result)){
+            while($nextup = mysqli_fetch_array($result)){
 				$date = $nextup['lastsold'];$month = addcslashes(translate_names(date('F', strtotime($date))), 'a..zA..Z');$string = "d $month Y H:i";
                 if($nextup['isActive']){$active = '<b title="actief">A</b>';}else{$active = '';}
 				echo "<tr>

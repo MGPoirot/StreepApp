@@ -32,9 +32,9 @@
 	</tr>
     <?php
         $query = "SELECT * FROM personalia ORDER BY name ASC";	
-        $result = mysql_query($query); 
+        $result = mysqli_query($conn, $query);
     
-        while($nextup = mysql_fetch_array($result)){
+        while($nextup = mysqli_fetch_array($result)){
 			if($nextup['isActive']){
 				$date = $nextup['lastused'];$month = addcslashes(translate_names(date('F', strtotime($date))), 'a..zA..Z');$string = "d $month Y";
 				if($nextup['isAdmin']){$admin = '<b title="administrator">A</b>';}else{$admin = '';}

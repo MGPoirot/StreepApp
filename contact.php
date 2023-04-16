@@ -1,4 +1,4 @@
-prod<?php
+<?php
 	include 'IDcheck.php';
 	include	'connectDB.php';
 	include 'lookup.php';
@@ -42,7 +42,7 @@ prod<?php
                             $text=$_POST['text'];
                             $sender= $_COOKIE['deviceID'];
                             $date = date("Y-m-d H:i:s");
-                            mysql_query("INSERT INTO contact VALUES(NULL,'$text','$date','$sender')");
+                            mysqli_query($conn, "INSERT INTO contact VALUES(NULL,'$text','$date','$sender')");
                             echo('<i><font color="#9D9D9D">bericht verzonden.</i>');
                         }
 						else{

@@ -39,8 +39,8 @@
 			<td>
         	<select name="name" title="op kosten van"><?php
 				echo "<option>" . giveName($_COOKIE['deviceID']) . "</option>";
-				$result1 = mysql_query("SELECT ID FROM personalia ORDER BY lastused DESC");
-				while($nextup = mysql_fetch_array($result1)){
+				$result1 = mysqli_query($conn, "SELECT ID FROM personalia ORDER BY lastused DESC");
+				while($nextup = mysqli_fetch_array($result1)){
 					if(isActive($nextup['ID']) and $nextup['ID'] != $_COOKIE['deviceID']){
 						echo "<option>" . giveName($nextup['ID']) . "</option>";
 					}
@@ -55,10 +55,10 @@
         </tr>
     </table>
 		<?php
-            $num_rows = mysql_num_rows(mysql_query("SELECT * FROM products WHERE isActive"));
+            $num_rows = mysql_num_rows(mysqli_query($conn, "SELECT * FROM products WHERE isActive"));
             $rows = round($num_rows / 2);
-            $result = mysql_query("SELECT * FROM products ORDER BY timessold DESC");
-            while($nextup = mysql_fetch_array($result)){
+            $result = mysqli_query($conn, "SELECT * FROM products ORDER BY timessold DESC");
+            while($nextup = mysqli_fetch_array($result)){
 				if($nextup['isActive']){
 					echo "<input 
 								id='sumbit' 

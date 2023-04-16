@@ -4,8 +4,8 @@
 	include 'connectDB.php';
 	if(!isset($_POST['submit']))  {
 		$q = "SELECT * FROM products WHERE prodID = $_GET[id]";
-		$result = mysql_query($q);
-		$product = mysql_fetch_array($result);
+		$result = mysqli_query($conn, $q);
+		$product = mysqli_fetch_array($result);
 	}
 ?><head>
         <meta charset="utf-8">
@@ -55,7 +55,7 @@
 	if(isset($_POST['submit']))	{
 		if(!isset($_POST['isActive'])){$isActive = 0;}else{$isActive = 1;}
 		$u = "UPDATE products SET `prodName` = '$_POST[product]', `prodPrice` = '$_POST[price]', `colorHex` = '$_POST[color]', `isActive` = '$isActive' WHERE prodID = $_POST[id]";
-		mysql_query($u) or die(mysql_error());
+		mysqli_query($conn, $u) or die(mysql_error());
 		header('Location: prodList.php');
 	}		 
 ?>
@@ -65,7 +65,7 @@
 <?php
 	if(isset($_POST['delete']))	{
 		$d = "UPDATE products SET `isActive` = 'false' WHERE prodID = $_POST[id]";
-		mysql_query($d) or die(mysql_error());
+		mysqli_query($conn, $d) or die(mysql_error());
 		header('Location: prodList.php');
 	}		 
 ?>
