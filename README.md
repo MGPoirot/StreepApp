@@ -10,7 +10,12 @@
 
 # Deploy
 
-Install XAMPP. Clone this repo to XAMPPs `htdocs` folder. In phpmyadmin, create a data base named `streepapp_db`. Use the phpmyadmin import wizard to import the `streepapp_db.sql` file into the streepapp_db.  Start the Apache and MySQL servers. Navigate to `/localhost/StreepApp/StreepApp`.
+1. Install XAMPP and open the XAMPP control panel.
+2. Start the Apache and MySQL servers. 
+3. Clone this repo to XAMPPs `htdocs` folder. 
+4. In `localhost/phpmyadmin`, create a data base named `streepapp_db`. 
+5. Use the phpmyadmin import wizard to import the `streepapp_db.sql` file into the streepapp_db. 
+6. Navigate to `/localhost/StreepApp/StreepApp`.
 
 ## Setting a data base password
 
